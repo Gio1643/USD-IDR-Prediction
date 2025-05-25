@@ -32,3 +32,9 @@ High | Nilai tukar tertinggi pada hari tersebut.
 Low | Nilai tukar terendah pada hari tersebut.
 Close | Harga penutupan nilai tukar pada akhir hari.
 Volume | Tidak tersedia atau 0 (karena ini bukan saham, melainkan kurs mata uang).
+
+### Menangani Missing Value dan Duplicate Data (Duplikasi Data)
+Pada tahap ini peneliti mengecek dataset yang tidak valid pada dataset. Setelah diperiksa apakah terdapat kolom yang bernilai null, hasilnya adalah tidak ada yang null. Sedangkan data duplikat atau data ganda juga tidak ada. Maka dengan demikian data siap untuk dianalisis pada tahap selanjutnya.
+
+### Univariate Analysis EDA
+Analisis univariat merupakan tahap eksplorasi data yang esensial, di mana fokusnya adalah untuk memahami karakteristik satu variabel saja pada satu waktu tanpa mempertimbangkan hubungannya dengan variabel lain. Tujuannya adalah untuk mendapatkan gambaran mengenai distribusi data, mengidentifikasi tendensi sentral seperti rata-rata atau median, mengukur dispersi atau penyebaran data, serta mendeteksi adanya nilai-nilai ekstrem (outlier) atau pola menarik lainnya. Dalam konteks gambar yang Anda berikan, kita melihat aplikasi analisis univariat melalui histogram untuk masing-masing variabel harga USD/IDR, yaitu 'Close', 'High', 'Low', dan 'Open'. Setiap histogram tersebut secara visual menyajikan distribusi frekuensi nilai harga, memperlihatkan seberapa sering rentang harga tertentu muncul; misalnya, tampak bahwa harga cenderung terkonsentrasi di sekitar 15.500 hingga 16.500. Lebih lanjut, bentuk distribusi yang terlihat pada histogram tersebut mengindikasikan adanya lebih dari satu puncak (bimodal atau multimodal), yang menunjukkan beberapa kelompok konsentrasi harga, dan ini memberikan pemahaman dasar mengenai karakteristik individual setiap variabel harga sebelum melangkah ke analisis yang lebih kompleks.
