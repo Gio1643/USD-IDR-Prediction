@@ -86,3 +86,15 @@ Pada pemodelan nilai tukar USD/IDR ini, model GRU diimplementasikan menggunakan 
 - model.add(Dense(1)): Menambahkan layer Dense output dengan 1 unit untuk prediksi nilai harga tunggal.
 - model.compile(optimizer='adam', loss='mean_squared_error'): Mengompilasi model dengan menentukan optimizer yaitu 'adam' dan loss function yaitu 'mean_squared_error' (MSE).
 
+## Evaluation
+<img src="https://github.com/Gio1643/USD-IDR-Prediction/blob/main/mse.png" align="center"><br>
+Untuk LSTM dan GRU, validation loss lebih rendah daripada train loss. Ini adalah skenario yang cukup unik dan bisa mengindikasikan beberapa hal:
+Dataset validasi mungkin secara kebetulan lebih mudah diprediksi daripada sebagian dari dataset pelatihan.
+Regularisasi (seperti Dropout) mungkin bekerja sangat efektif, atau model belum sepenuhnya mengeksploitasi kapasitasnya pada data pelatihan.
+Ukuran dataset validasi yang relatif kecil juga bisa mempengaruhi stabilitas metrik ini.
+Untuk BiLSTM, train loss (0.000208) lebih rendah dari validation loss (0.0001337) merupakan kebalikan dari situasi di atas, namun perbedaannya tidak terlalu besar. Sebenarnya, jika kita konsisten dalam membandingkan, nilai validation loss BiLSTM (0.0001337) lebih besar dari train loss-nya. Ini adalah perilaku yang lebih umum di mana model sedikit lebih baik pada data yang telah dilihatnya.
+<img src="https://github.com/Gio1643/USD-IDR-Prediction/blob/main/msevisualisasi.png" align="center"><br>
+Dapat disimpulkan, performa terbaik pada data baru (generalisasi), model LSTM dan GRU menunjukkan hasil yang paling menjanjikan dengan validation loss yang sangat rendah dan hampir identik. Meskipun BiLSTM paling baik dalam mempelajari data pelatihan, kemampuannya untuk generalisasi pada data validasi sedikit di bawah dua model lainnya dalam eksperimen ini.
+
+## Referensi
+Are, G. P. B., & Sitorus, S. H. (2020). PREDIKSI NILAI TUKAR MATA UANG RUPIAH TERHADAP DOLAR AMERIKA MENGGUNAKAN METODE HIDDEN MARKOV MODEL. Coding Jurnal Komputer dan Aplikasi, 8(1). https://doi.org/10.26418/coding.v8i1.39192 Budiastawa, I. D. G., Santiyasa, Iw., & Pramartha, C. R. A. (2019). Prediksi Dan Akurasi Nilai Tukar Mata Uang Rupiah Terhadap US Dolar Menggunakan Radial Basis Function Neural Network. Jurnal Elektronik Ilmu Komputer Udayana, 7(4). https://ojs.unud.ac.id/index.php/jlk/article/download/48018/29808
