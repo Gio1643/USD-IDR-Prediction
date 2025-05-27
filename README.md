@@ -37,11 +37,13 @@ Volume | Tidak tersedia atau 0 (karena ini bukan saham, melainkan kurs mata uang
 Pada tahap ini peneliti mengecek dataset yang tidak valid pada dataset. Setelah diperiksa apakah terdapat kolom yang bernilai null, hasilnya adalah tidak ada yang null. Sedangkan data duplikat atau data ganda juga tidak ada. Maka dengan demikian data siap untuk dianalisis pada tahap selanjutnya.
 
 ### Univariate Analysis EDA
-<img src="https://github.com/Gio1643/USD-IDR-Prediction/blob/main/univariate.png" align="center"><br>
+![univariate](https://github.com/user-attachments/assets/8d36f4ae-f1bc-4dab-a66a-4780d59c9eec)
+
 Analisis univariat merupakan tahap eksplorasi data yang esensial, di mana fokusnya adalah untuk memahami karakteristik satu variabel saja pada satu waktu tanpa mempertimbangkan hubungannya dengan variabel lain. Tujuannya adalah untuk mendapatkan gambaran mengenai distribusi data, mengidentifikasi tendensi sentral seperti rata-rata atau median, mengukur dispersi atau penyebaran data, serta mendeteksi adanya nilai-nilai ekstrem (outlier) atau pola menarik lainnya. Dalam konteks gambar yang Anda berikan, kita melihat aplikasi analisis univariat melalui histogram untuk masing-masing variabel harga USD/IDR, yaitu 'Close', 'High', 'Low', dan 'Open'. Setiap histogram tersebut secara visual menyajikan distribusi frekuensi nilai harga, memperlihatkan seberapa sering rentang harga tertentu muncul; misalnya, tampak bahwa harga cenderung terkonsentrasi di sekitar 15.500 hingga 16.500. Lebih lanjut, bentuk distribusi yang terlihat pada histogram tersebut mengindikasikan adanya lebih dari satu puncak (bimodal atau multimodal), yang menunjukkan beberapa kelompok konsentrasi harga, dan ini memberikan pemahaman dasar mengenai karakteristik individual setiap variabel harga sebelum melangkah ke analisis yang lebih kompleks.
 
 ### Multivariate Analysis EDA
-<img src="https://github.com/Gio1643/USD-IDR-Prediction/blob/main/Multivariate.png" align="center"><br>
+![Multivariate](https://github.com/user-attachments/assets/ad8b7c0e-0384-43b9-9794-ded168e12a9a)
+
 Analisis multivariat, yang bertujuan untuk menganalisis lebih dari dua variabel secara bersamaan guna memahami hubungan kompleks di antara mereka, divisualisasikan dengan baik melalui pair plot seperti yang Anda tunjukkan untuk data harga USD/IDR. Dalam pair plot ini, diagonal utama menampilkan estimasi kepadatan kernel (KDE) untuk masing-masing variabel harga ('Close', 'High', 'Low', 'Open'), yang merupakan representasi distribusi univariat dan menunjukkan pola multimodal yang serupa di antara variabel-variabel tersebut, mencerminkan karakteristik individualnya. Sementara itu, plot di luar diagonal adalah scatter plot yang menggambarkan hubungan bivariat antar pasangan variabel harga; dari sini, terlihat jelas adanya korelasi positif yang sangat kuat antara harga 'Open', 'High', 'Low', dan 'Close', ditandai dengan titik-titik data yang membentuk garis lurus menanjak yang sangat rapat. Observasi ini wajar mengingat harga-harga tersebut dalam satu periode perdagangan mata uang cenderung bergerak sangat berdekatan, dan pair plot ini secara efektif menyajikan baik gambaran individual maupun keterkaitan erat antar variabel sebagai langkah awal yang informatif dalam analisis multivariat data nilai tukar USD/IDR.
 
 ## Data Preparation
@@ -87,13 +89,15 @@ Pada pemodelan nilai tukar USD/IDR ini, model GRU diimplementasikan menggunakan 
 - model.compile(optimizer='adam', loss='mean_squared_error'): Mengompilasi model dengan menentukan optimizer yaitu 'adam' dan loss function yaitu 'mean_squared_error' (MSE).
 
 ## Evaluation
-<img src="https://github.com/Gio1643/USD-IDR-Prediction/blob/main/mse.png" align="center"><br>
+![mse](https://github.com/user-attachments/assets/b4c9970d-1888-46a2-8ade-8ce7ad0a6f72)
+
 Untuk LSTM dan GRU, validation loss lebih rendah daripada train loss. Ini adalah skenario yang cukup unik dan bisa mengindikasikan beberapa hal:
 Dataset validasi mungkin secara kebetulan lebih mudah diprediksi daripada sebagian dari dataset pelatihan.
 Regularisasi (seperti Dropout) mungkin bekerja sangat efektif, atau model belum sepenuhnya mengeksploitasi kapasitasnya pada data pelatihan.
 Ukuran dataset validasi yang relatif kecil juga bisa mempengaruhi stabilitas metrik ini.
 Untuk BiLSTM, train loss (0.000208) lebih rendah dari validation loss (0.0001337) merupakan kebalikan dari situasi di atas, namun perbedaannya tidak terlalu besar. Sebenarnya, jika kita konsisten dalam membandingkan, nilai validation loss BiLSTM (0.0001337) lebih besar dari train loss-nya. Ini adalah perilaku yang lebih umum di mana model sedikit lebih baik pada data yang telah dilihatnya.
-<img src="https://github.com/Gio1643/USD-IDR-Prediction/blob/main/msevisualisasi.png" align="center"><br>
+![msevisualisasi](https://github.com/user-attachments/assets/7caa459d-8241-4263-bb30-6d02ceb6372e)
+
 Dapat disimpulkan, performa terbaik pada data baru (generalisasi), model LSTM dan GRU menunjukkan hasil yang paling menjanjikan dengan validation loss yang sangat rendah dan hampir identik. Meskipun BiLSTM paling baik dalam mempelajari data pelatihan, kemampuannya untuk generalisasi pada data validasi sedikit di bawah dua model lainnya dalam eksperimen ini.
 
 ## Referensi
